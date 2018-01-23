@@ -1,0 +1,16 @@
+.login-page {
+  min-width: 100vw;
+  min-height: 100vh;
+  position: fixed;
+  img {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
+  .login-form {
+    position: relative;
+    z-index: 10;
+  }
+}
