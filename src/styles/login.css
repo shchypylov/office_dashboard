@@ -1,15 +1,27 @@
 .login-page {
   min-width: 100vw;
   min-height: 100vh;
-  position: fixed; }
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
   .login-page img {
     position: absolute;
     left: 0;
     width: 100%;
     height: 100%;
     top: 0; }
-  .login-page .login-form {
+  .login-page .content {
     position: relative;
-    z-index: 10; }
+    z-index: 10;
+    max-width: 300px;
+    width: 100%; }
+    .login-page .content .welcome {
+      text-align: center;
+      margin-bottom: 30px; }
+      .login-page .content .welcome h1 {
+        font-size: 42px; }
+      .login-page .content .welcome h3 {
+        font-size: 22px; }
 
 /*# sourceMappingURL=login.css.map */

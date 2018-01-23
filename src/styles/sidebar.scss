@@ -1,0 +1,47 @@
+@import "variables";
+
+.sidebar {
+  transition: .3s all;
+  display: block;
+  width: 300px;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  background: $dark_grape;
+  .sidebar-menu {
+    width: 100%;
+    margin-bottom: 90px;
+    li {
+      height: 58px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font: 18px 'Open Sans', sans-serif;
+      background: transparent;
+      transition: .3s all;
+      &:hover {
+        background: $dark_grape_hover;
+      }
+    }
+  }
+  .buttons {
+    margin-bottom: 30px;
+    .btn:first-of-type {
+      margin-bottom: 10px;
+    }
+  }
+  .find-more {
+    font: 14px $open_sans;
+    text-align: center;
+    text-transform: uppercase;
+    a {
+      font-weight: bold;
+    }
+  }
+}
+

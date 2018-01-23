@@ -1,0 +1,38 @@
+.sidebar {
+  transition: .3s all;
+  display: block;
+  width: 300px;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  background: #1e171f; }
+  .sidebar .sidebar-menu {
+    width: 100%;
+    margin-bottom: 90px; }
+    .sidebar .sidebar-menu li {
+      height: 58px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font: 18px 'Open Sans', sans-serif;
+      background: transparent;
+      transition: .3s all; }
+      .sidebar .sidebar-menu li:hover {
+        background: #2e272f; }
+  .sidebar .buttons {
+    margin-bottom: 30px; }
+    .sidebar .buttons .btn:first-of-type {
+      margin-bottom: 10px; }
+  .sidebar .find-more {
+    font: 14px "Open Sans", sans-serif;
+    text-align: center;
+    text-transform: uppercase; }
+    .sidebar .find-more a {
+      font-weight: bold; }
+
+/*# sourceMappingURL=sidebar.css.map */

@@ -10,15 +10,17 @@ let LoginForm = props => {
   const {handleSubmit} = props;
   return (
       <form onSubmit={handleSubmit} className="login-form">
-        <div>
+        <div className="input-wrap">
           <label htmlFor="login">Login</label>
           <Field name="login" component="input" type="text"/>
         </div>
-        <div>
+        <div className="input-wrap">
           <label htmlFor="password">Password</label>
           <Field name="password" component="input" type="password"/>
         </div>
-        <button type="submit">Submit</button>
+        <div className="input-wrap">
+          <button className="btn" type="submit">Submit</button>
+        </div>
       </form>
   )
 };
@@ -34,8 +36,13 @@ class Login extends Component {
     return (
         <div className="login-page">
           <img src="/img/bg.jpg" alt=""/>
-          <h1>Hello, friend</h1>
-          <LoginForm onSubmit={this.submit}/>
+          <div className="content">
+            <div className="welcome">
+              <h1>Hello,</h1>
+              <h3>please, log-in</h3>
+            </div>
+            <LoginForm onSubmit={this.submit}/>
+          </div>
         </div>
     );
   }
