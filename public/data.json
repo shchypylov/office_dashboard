@@ -1,15 +1,18 @@
-[
-  {
-    "sidebar": [
-      "Dashboard",
-      "Account Info",
-      "Add Users",
-      "Users",
-      "Cash",
-      "Received Emails",
-      "Invoices",
-      "Settings",
-      "Notes"
-    ]
+{
+  "sidebar": [
+    "Dashboard",
+    "Account Info",
+    "Add Users",
+    "Users",
+    "Cash",
+    "Received Emails",
+    "Invoices",
+    "Settings",
+    "Notes"
+  ],
+  "top_menu": {
+    "Notifications": "15",
+    "Messages": "30"
   }
-]
+}
+

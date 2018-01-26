@@ -1,10 +1,14 @@
-import {combineReducers} from "redux"
-import {reducer as formReducer} from "redux-form"
-import {submitUserReducer} from "./submitUserReducer"
-import {renderSidebarReducer} from "./renderSidebarReducer";
+import { combineReducers } from "redux";
+import { reducer as formReducer } from "redux-form";
+import { submitUserReducer } from "./submitUserReducer";
+import { renderSidebarReducer } from "./renderSidebarReducer";
+import { changeSidebarReducer } from "./changeSidebarReducer";
+import { fetchNotificationsReducer } from "./fetchNotificationsReducer";
 
 export default combineReducers({
-  form : formReducer,
-  sidebar : renderSidebarReducer,
-  user: submitUserReducer
+  form: formReducer,
+  sidebar: renderSidebarReducer,
+  user: submitUserReducer,
+  menu: changeSidebarReducer,
+  notifications: fetchNotificationsReducer
 });

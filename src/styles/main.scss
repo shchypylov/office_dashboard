@@ -1,4 +1,4 @@
-@import "colors";
+@import "variables";
 .input-wrap {
   display: block;
   margin-bottom: 20px;
@@ -29,7 +29,7 @@
   border-radius: 10px;
   background: transparent;
   outline: none;
-  transition: .3s all;
+  transition: 0.3s all;
   max-width: 190px;
   margin: 0 auto;
   &:hover {
@@ -43,8 +43,12 @@
   font-size: 14px;
 }
 
-
-p, span, div, label, .btn, a {
+p,
+span,
+div,
+label,
+.btn,
+a {
   color: #fff;
   text-decoration: none;
 }
