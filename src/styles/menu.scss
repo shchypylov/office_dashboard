@@ -38,4 +38,20 @@
       border-radius: 50%;
     }
   }
+  .top-menu__user {
+    display: flex;
+    align-items: center;
+    img {
+      margin-right: 15px;
+    }
+    span {
+      margin-right: 8px;
+    }
+  }
+  .change-sidebar {
+    transition: .3s all;
+    &.active {
+      transform: rotate(180deg);
+    }
+  }
 }

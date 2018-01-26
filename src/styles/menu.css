@@ -30,5 +30,16 @@
       font: 11.5px "Lato", sans-serif;
       background: #f26c4f;
       border-radius: 50%; }
+  .top-menu .top-menu__user {
+    display: flex;
+    align-items: center; }
+    .top-menu .top-menu__user img {
+      margin-right: 15px; }
+    .top-menu .top-menu__user span {
+      margin-right: 8px; }
+  .top-menu .change-sidebar {
+    transition: .3s all; }
+    .top-menu .change-sidebar.active {
+      transform: rotate(180deg); }
 
 /*# sourceMappingURL=menu.css.map */

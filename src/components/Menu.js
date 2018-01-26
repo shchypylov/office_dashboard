@@ -1,12 +1,18 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {changeSidebar, fetchNotifications} from "../actions";
-import FaLongArrowLeft from "react-icons/lib/fa/long-arrow-left"
 import MdNotificationsActive from "react-icons/lib/md/notifications-active"
 import MdMarkunread from "react-icons/lib/md/markunread"
-import "../styles/menu.css";
+import MdArrowBack from "react-icons/lib/md/arrow-back"
+import MdArrowDropDown from "react-icons/lib/md/arrow-drop-down"
+import "../styles/menu.css"
 
 class Menu extends Component {
+  
+  state = {
+    arrow_active : false
+  }
+  
   componentDidMount() {
     this.props.fetchNotifications();
   }
@@ -38,20 +44,22 @@ class Menu extends Component {
     });
   }
   
-  rednerUser() {
+  renderUser() {
     if (this.props.user[0]) {
       const user = this.props.user[0].login;
       return (
-          <div className="user">
+          <div className="top-menu__user">
             <img className="user-icon" src="/img/no_user.jpg" alt=""/>
-            {user}
+            <span>{user}</span>
+          
           </div>
       );
     } else {
       return (
-          <div className="user">
+          <div className="top-menu__user">
             <img className="user-icon" src="/img/no_user.jpg" alt=""/>
-            Guest
+            <span>Guest</span>
+            <MdArrowDropDown size={19} color="white" />
           </div>
       );
     }
@@ -63,14 +71,16 @@ class Menu extends Component {
     ) : (
         <div>Loading...</div>
     );
+    const changeSidebar = !this.props.menu ? "active change-sidebar": "change-sidebar";
     return (
         <div className="top-menu">
-          <a href="#" onClick={this.props.changeSidebar}>
-            <FaLongArrowLeft size={27} color="white"/>
-          </a>
+            <a href="#" onClick={this.props.changeSidebar} className={changeSidebar}>
+              <MdArrowBack size={27} color="white"/>
+            </a>
+
           <div className="top-menu__info">
             <div className="top-menu__notifications">{content}</div>
-            <div className="top-menu__user">{this.rednerUser()}</div>
+            {this.renderUser()}
           </div>
         </div>
     );
@@ -78,7 +88,7 @@ class Menu extends Component {
 }
 
 function mapStateToProps(state) {
-  return {user: state.user, notifications: state.notifications};
+  return {user: state.user, notifications: state.notifications, menu: state.menu};
 }
 
 const mapDispatchToProps = {

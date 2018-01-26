@@ -7,12 +7,12 @@
   flex-wrap: wrap;
   min-height: 100vh;
   height: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
   overflow: hidden;
   overflow-y: auto;
   background: $dark_grape;
+  &.fold {
+    width: 80px;
+  }
   .sidebar-menu {
     width: 100%;
     margin-bottom: 90px;

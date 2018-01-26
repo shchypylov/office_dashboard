@@ -5,7 +5,7 @@ import Content from "./Content";
 class Dashboard extends Component {
   render() {
     return (
-      <div>
+      <div className="page">
         <Sidebar />
         <Content />
       </div>
