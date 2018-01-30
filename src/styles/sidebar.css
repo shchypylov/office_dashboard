@@ -9,7 +9,19 @@
   overflow-y: auto;
   background: #1e171f; }
   .sidebar.fold {
-    width: 80px; }
+    width: 80px;
+    align-items: center;
+    display: flex; }
+    .sidebar.fold .logo {
+      display: none; }
+    .sidebar.fold .buttons {
+      display: none; }
+    .sidebar.fold .find-more {
+      display: none; }
+    .sidebar.fold .sidebar-menu li a .icon {
+      display: block; }
+    .sidebar.fold .sidebar-menu li a .text {
+      display: none; }
   .sidebar .sidebar-menu {
     width: 100%;
     margin-bottom: 90px; }
@@ -18,11 +30,23 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font: 18px 'Open Sans', sans-serif;
-      background: transparent;
-      transition: .3s all; }
-      .sidebar .sidebar-menu li:hover {
-        background: #2e272f; }
+      font: 18px 'Open Sans', sans-serif; }
+      .sidebar .sidebar-menu li a {
+        display: flex;
+        width: 100%;
+        background: transparent;
+        height: 100%;
+        align-items: center;
+        transition: .3s all;
+        justify-content: center; }
+        .sidebar .sidebar-menu li a .icon {
+          font-size: 24px;
+          display: none;
+          transition: .3s all; }
+        .sidebar .sidebar-menu li a .text {
+          display: block; }
+        .sidebar .sidebar-menu li a:hover {
+          background: #2e272f; }
   .sidebar .buttons {
     margin-bottom: 30px; }
     .sidebar .buttons .btn:first-of-type {

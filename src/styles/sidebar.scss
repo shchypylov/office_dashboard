@@ -12,6 +12,29 @@
   background: $dark_grape;
   &.fold {
     width: 80px;
+    align-items: center;
+    display: flex;
+    .logo {
+      display: none;
+    }
+    .buttons {
+      display: none;
+    }
+    .find-more {
+      display: none;
+    }
+    .sidebar-menu {
+      li {
+        a {
+          .icon {
+            display: block;
+          }
+          .text {
+            display: none;
+          }
+        }
+      }
+    }
   }
   .sidebar-menu {
     width: 100%;
@@ -22,10 +45,25 @@
       justify-content: center;
       align-items: center;
       font: 18px 'Open Sans', sans-serif;
-      background: transparent;
-      transition: .3s all;
-      &:hover {
-        background: $dark_grape_hover;
+      a {
+        display: flex;
+        width: 100%;
+        background: transparent;
+        height: 100%;
+        align-items: center;
+        transition: .3s all;
+        justify-content: center;
+        .icon {
+          font-size: 24px;
+          display: none;
+          transition: .3s all;
+        }
+        .text {
+          display: block;
+        }
+        &:hover {
+          background: $dark_grape_hover;
+        }
       }
     }
   }

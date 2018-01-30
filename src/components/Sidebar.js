@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {renderSidebar} from "../actions";
 import "../styles/sidebar.css";
-import {Dashboard as MdDashboard} from "react-icons/lib/md/dashboard"
+import  "../styles/fonts.css"
 
 class Sidebar extends Component {
   componentDidMount() {
@@ -10,17 +10,20 @@ class Sidebar extends Component {
   }
   
   render() {
-    const sidebar = this.props.sidebar;
+    const sidebar = this.props.sidebar[0];
     const content = sidebar ? (
-        sidebar.map((element, index) => {
+        Object.keys(sidebar).map(element => {
+          const className = `icon ${sidebar[element].icon}`;
           return (
-              <li key={index}>
-                <div className="icon">
-                
-                </div>
-                <a href="#">{element}</a>
+              <li key={element}>
+                <a href="#">
+                  <i className={className} />
+                  <span className="text">
+                    {sidebar[element].text}
+                  </span>
+                </a>
               </li>
-          );
+          ); 
         })
     ) : (
         <div>Loading, please, waits</div>
