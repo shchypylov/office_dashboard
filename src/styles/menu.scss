@@ -6,6 +6,7 @@
   border-radius: 50%;
 }
 
+
 .top-menu {
   height: 123px;
   display: flex;
@@ -41,6 +42,36 @@
   .top-menu__user {
     display: flex;
     align-items: center;
+    position: relative;
+    &:hover {
+      .dropdown-icon {
+        transform: rotate(180deg);
+      }
+      cursor: pointer;
+      .user-logout {
+        opacity: 1;
+      }
+    }
+    .dropdown-icon {
+      transition: .3s all;
+    }
+    .user-logout {
+      padding-top: 10px;
+      background-clip: padding-box;
+      opacity: 0;
+      transition: .3s all;
+      position: absolute;
+      bottom: -30px;
+      justify-content: left;
+      align-items: center;
+      width: 100%;
+      color: $orange;
+      display: flex;
+      .icon {
+        font-size: 20px;
+        margin-right: 5px;
+      }
+    }
     img {
       margin-right: 15px;
     }

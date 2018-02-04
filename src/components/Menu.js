@@ -1,16 +1,21 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {changeSidebar, fetchNotifications} from "../actions";
+import cookie from "react-cookies"
+import {Link} from "react-router-dom"
 import MdNotificationsActive from "react-icons/lib/md/notifications-active"
 import MdMarkunread from "react-icons/lib/md/markunread"
 import MdArrowBack from "react-icons/lib/md/arrow-back"
+import MdExitToApp from "react-icons/lib/md/exit-to-app"
 import MdArrowDropDown from "react-icons/lib/md/arrow-drop-down"
 import "../styles/menu.css"
 
 class Menu extends Component {
   
   state = {
-    arrow_active: false
+    arrow_active: false,
+    user: cookie.load("userID") || "Guest",
+    onHoverUser: false
   };
   
   componentDidMount() {
@@ -45,24 +50,18 @@ class Menu extends Component {
   }
   
   renderUser() {
-    if (this.props.user[0]) {
-      const user = this.props.user[0].login;
-      return (
-          <div className="top-menu__user">
-            <img className="user-icon" src="/img/no_user.jpg" alt=""/>
-            <span>{user}</span>
-          
-          </div>
-      );
-    } else {
-      return (
-          <div className="top-menu__user">
-            <img className="user-icon" src="/img/no_user.jpg" alt=""/>
-            <span>Guest</span>
-            <MdArrowDropDown size={19} color="white"/>
-          </div>
-      );
-    }
+    const user = this.state.user;
+    return (
+        <div className="top-menu__user">
+          <img className="user-icon" src="/img/logo.jpg" alt=""/>
+          <span>{user}</span>
+          <MdArrowDropDown size={20} className="dropdown-icon"/>
+          <Link className="user-logout" to="/">
+            <MdExitToApp className="icon"/>
+            Logout
+          </Link>
+        </div>
+    );
   }
   
   render() {
