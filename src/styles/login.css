@@ -1,0 +1,35 @@
+.login-page {
+  min-width: 100vw;
+  min-height: 100vh;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .login-page img {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    top: 0; }
+  .login-page .content {
+    position: relative;
+    z-index: 10;
+    max-width: 300px;
+    width: 100%; }
+    .login-page .content .welcome {
+      text-align: center;
+      margin-bottom: 30px; }
+      .login-page .content .welcome h1 {
+        font-size: 42px; }
+      .login-page .content .welcome h3 {
+        font-size: 22px; }
+
+.error {
+  margin-top: 20px;
+  color: #f26c4f;
+  text-align: center;
+  font-size: 12px; }
+  .error b {
+    font-size: 16px; }
+
+/*# sourceMappingURL=login.css.map */

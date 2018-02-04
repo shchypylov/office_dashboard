@@ -1,0 +1,50 @@
+.input-wrap {
+  display: block;
+  margin-bottom: 20px; }
+  .input-wrap:last-of-type {
+    margin-bottom: 0; }
+  .input-wrap label {
+    display: block;
+    margin-bottom: 5px; }
+  .input-wrap input {
+    display: block;
+    width: 100%;
+    border: 1px solid #86838c;
+    outline: none;
+    height: 35px;
+    padding: 5px 15px;
+    font-size: 14px;
+    border-radius: 10px; }
+
+.btn {
+  padding: 11px 18px;
+  display: block;
+  text-align: center;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background: transparent;
+  outline: none;
+  transition: 0.3s all;
+  max-width: 190px;
+  margin: 0 auto; }
+  .btn:hover {
+    cursor: pointer;
+    background: #fff;
+    color: #86838c; }
+
+* {
+  font-size: 14px; }
+
+p,
+span,
+div,
+label,
+.btn,
+a {
+  color: #fff;
+  text-decoration: none; }
+
+.page {
+  display: flex; }
+
+/*# sourceMappingURL=main.css.map */
