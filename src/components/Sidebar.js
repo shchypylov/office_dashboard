@@ -3,6 +3,8 @@ import {connect} from "react-redux";
 import {renderSidebar} from "../actions";
 import "../styles/sidebar.css";
 import  "../styles/fonts.css"
+// import {Notes as MdArrowDropDown} from "react-icons/lib/md/arrow-drop-down"
+
 
 class Sidebar extends Component {
   componentDidMount() {
@@ -17,6 +19,7 @@ class Sidebar extends Component {
           return (
               <li key={element}>
                 <a href="#">
+                  {/*<Element />*/}
                   <i className={className} />
                   <span className="text">
                     {sidebar[element].text}

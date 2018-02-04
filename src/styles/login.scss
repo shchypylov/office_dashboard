@@ -1,3 +1,4 @@
+@import "variables";
 .login-page {
   min-width: 100vw;
   min-height: 100vh;
@@ -27,5 +28,15 @@
         font-size: 22px;
       }
     }
+  }
+}
+
+.error {
+  margin-top: 20px;
+  color: $orange;
+  text-align: center;
+  font-size: 12px;
+  b {
+    font-size: 16px;
   }
 }

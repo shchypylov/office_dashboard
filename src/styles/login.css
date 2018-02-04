@@ -24,4 +24,12 @@
       .login-page .content .welcome h3 {
         font-size: 22px; }
 
+.error {
+  margin-top: 20px;
+  color: #f26c4f;
+  text-align: center;
+  font-size: 12px; }
+  .error b {
+    font-size: 16px; }
+
 /*# sourceMappingURL=login.css.map */

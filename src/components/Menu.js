@@ -10,8 +10,8 @@ import "../styles/menu.css"
 class Menu extends Component {
   
   state = {
-    arrow_active : false
-  }
+    arrow_active: false
+  };
   
   componentDidMount() {
     this.props.fetchNotifications();
@@ -59,7 +59,7 @@ class Menu extends Component {
           <div className="top-menu__user">
             <img className="user-icon" src="/img/no_user.jpg" alt=""/>
             <span>Guest</span>
-            <MdArrowDropDown size={19} color="white" />
+            <MdArrowDropDown size={19} color="white"/>
           </div>
       );
     }
@@ -71,13 +71,13 @@ class Menu extends Component {
     ) : (
         <div>Loading...</div>
     );
-    const changeSidebar = !this.props.menu ? "active change-sidebar": "change-sidebar";
+    const changeSidebar = !this.props.menu ? "active change-sidebar" : "change-sidebar";
     return (
         <div className="top-menu">
-            <a href="#" onClick={this.props.changeSidebar} className={changeSidebar}>
-              <MdArrowBack size={27} color="white"/>
-            </a>
-
+          <a href="#" onClick={this.props.changeSidebar} className={changeSidebar}>
+            <MdArrowBack size={27} color="white"/>
+          </a>
+          
           <div className="top-menu__info">
             <div className="top-menu__notifications">{content}</div>
             {this.renderUser()}

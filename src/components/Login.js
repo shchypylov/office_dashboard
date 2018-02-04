@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from "redux-form"
 import {connect} from "react-redux"
+import cookie from "react-cookies"
 import history from "../history"
-import {submitUser} from "../actions"
+import {submitUser, fetchUsers} from "../actions"
 import "../styles/login.css"
 
 
@@ -27,9 +28,48 @@ let LoginForm = props => {
 
 class Login extends Component {
   
+  state = {
+    error: false,
+    user: cookie.load('userID') || "guest"
+  };
+  
+  componentWillMount() {
+    this.props.fetchUsers();
+  }
+  
   submit = values => {
-    this.props.submitUser(values);
-    history.push('/dashboard')
+    if (cookie.load('userID') === undefined) {
+      const expires = new Date();
+      const now = new Date();
+      expires.setDate(now.getDate() + 14);
+      cookie.save(
+          "userID",
+          values.login
+      );
+      this.props.submitUser(values);
+    }
+    else {
+      const users = this.props.users;
+      const userID = cookie.load('userID');
+      const user = {};
+      Object.keys(users).map(elem => {
+        if (users[elem].login === userID) {
+          user.login = users[elem].login;
+          user.password = users[elem].password
+        }
+      });
+      
+      if (values.login === user.login && values.password === user.password) {
+        history.push('/dashboard')
+      }
+      else {
+        this.setState({
+          error: true
+        })
+      }
+      
+    }
+    
   };
   
   render() {
@@ -42,6 +82,11 @@ class Login extends Component {
               <h3>please, log-in</h3>
             </div>
             <LoginForm onSubmit={this.submit}/>
+            {this.state.error && <div className="error">
+              Sorry, something gone wrong. Double-check your login/password. By the way, your login is:
+              <b> {this.state.user}</b>
+            </div>
+            }
           </div>
         </div>
     );
@@ -53,9 +98,11 @@ LoginForm = reduxForm({
 })(LoginForm);
 
 const mapDispatchToProps = {
-  submitUser
-}
+  submitUser,
+  fetchUsers
+};
 
 export default connect(state => ({
-  user: state.user
+  user: state.user,
+  users: state.users
 }), mapDispatchToProps)(Login);
