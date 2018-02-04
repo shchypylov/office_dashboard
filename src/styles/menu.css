@@ -32,7 +32,31 @@
       border-radius: 50%; }
   .top-menu .top-menu__user {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    position: relative; }
+    .top-menu .top-menu__user:hover {
+      cursor: pointer; }
+      .top-menu .top-menu__user:hover .dropdown-icon {
+        transform: rotate(180deg); }
+      .top-menu .top-menu__user:hover .user-logout {
+        opacity: 1; }
+    .top-menu .top-menu__user .dropdown-icon {
+      transition: .3s all; }
+    .top-menu .top-menu__user .user-logout {
+      padding-top: 10px;
+      background-clip: padding-box;
+      opacity: 0;
+      transition: .3s all;
+      position: absolute;
+      bottom: -30px;
+      justify-content: left;
+      align-items: center;
+      width: 100%;
+      color: #f26c4f;
+      display: flex; }
+      .top-menu .top-menu__user .user-logout .icon {
+        font-size: 20px;
+        margin-right: 5px; }
     .top-menu .top-menu__user img {
       margin-right: 15px; }
     .top-menu .top-menu__user span {

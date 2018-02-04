@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom"
 import {renderSidebar} from "../actions";
 import "../styles/sidebar.css";
 import  "../styles/fonts.css"
-// import {Notes as MdArrowDropDown} from "react-icons/lib/md/arrow-drop-down"
 
 
 class Sidebar extends Component {
@@ -19,7 +19,6 @@ class Sidebar extends Component {
           return (
               <li key={element}>
                 <a href="#">
-                  {/*<Element />*/}
                   <i className={className} />
                   <span className="text">
                     {sidebar[element].text}
@@ -36,9 +35,9 @@ class Sidebar extends Component {
     
     return (
         <div className={fold}>
-          <div className="logo">
-            <img src="/img/logo.jpg" alt="logo"/>
-          </div>
+          <Link to="/" className="logo">
+            <img src="/img/logo_head.jpg" alt="logo"/>
+          </Link>
           <ul className="sidebar-menu">{content}</ul>
           <div className="buttons">
             <div className="btn">Facebook Link Here.</div>
