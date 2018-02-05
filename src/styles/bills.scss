@@ -3,32 +3,39 @@
   max-width: 70%;
   width: 100%;
   margin-right: 2px;
+
   .title {
     padding: 30px 0;
     margin-bottom: 2px;
     background: url("/img/back680x215.jpg") no-repeat scroll;
     background-size: cover;
+
     h2 {
       font-size: 36px;
       text-align: center;
       font-weight: bold;
     }
   }
+
   .bills-stats {
     display: inline-flex;
     width: 100%;
+
     div {
       flex: 1;
       margin-right: 2px;
       text-align: center;
       background: url("/img/back680x215.jpg") no-repeat scroll center center;
       padding: 60px 0;
+
       &:last-of-type {
         margin-right: 0;
       }
+
       span {
         font-size: 24px;
       }
+
       p {
         margin-top: 10px;
         font-size: 36px;
@@ -47,6 +54,7 @@
   width: 100%;
   flex-grow: 1;
   max-width: 30%;
+
   .title {
     background: url("/img/back680x215.jpg") no-repeat scroll;
     background-size: cover;
@@ -54,14 +62,43 @@
     padding: 25px 30px;
     margin-bottom: 2px;
   }
+
   .graph {
     background: url("/img/back680x215.jpg") no-repeat scroll;
     background-size: cover;
     width: 100%;
     height: 100%;
-  }
-  .recharts-wrapper {
+    .recharts-wrapper {
+      width: 160px;
+      height: 160px;
+    }
     .recharts-surface {
+      position: absolute;
+      left: -35px;
+      top: -20px;
+    }
+  }
+}
+
+.recharts-legend-wrapper {
+  left: auto !important;
+  right: -100px !important;
+  width: 180px !important;
+  top: 75px !important;
+
+  .recharts-default-legend {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    text-align: right !important;
+    flex-wrap: wrap;
+    .recharts-legend-item {
+      display: block !important;
+      width: 100%;
+      margin: 0 !important;
+      .recharts-surface {
+        position: static;
+      }
     }
   }
 }

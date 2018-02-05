@@ -1,8 +1,7 @@
 .page-content {
   padding: 0 53px;
-  flex-grow: 1;
+  flex: 1;
   background: url("/img/bg.jpg") no-repeat scroll;
-  //width: 100%;
-  height: 100%;
+  background-size: cover;
   min-height: 100vh;
 }

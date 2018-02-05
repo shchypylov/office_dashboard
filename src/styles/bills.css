@@ -49,5 +49,30 @@
     background-size: cover;
     width: 100%;
     height: 100%; }
+    .bills-progress .graph .recharts-wrapper {
+      width: 160px;
+      height: 160px; }
+    .bills-progress .graph .recharts-surface {
+      position: absolute;
+      left: -35px;
+      top: -20px; }
+
+.recharts-legend-wrapper {
+  left: auto !important;
+  right: -100px !important;
+  width: 180px !important;
+  top: 75px !important; }
+  .recharts-legend-wrapper .recharts-default-legend {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    text-align: right !important;
+    flex-wrap: wrap; }
+    .recharts-legend-wrapper .recharts-default-legend .recharts-legend-item {
+      display: block !important;
+      width: 100%;
+      margin: 0 !important; }
+      .recharts-legend-wrapper .recharts-default-legend .recharts-legend-item .recharts-surface {
+        position: static; }
 
 /*# sourceMappingURL=bills.css.map */
