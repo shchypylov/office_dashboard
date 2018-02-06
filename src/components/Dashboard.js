@@ -1,16 +1,14 @@
-import React, { Component } from "react";
-import Sidebar from "./Sidebar";
-import Content from "./Content";
-
-class Dashboard extends Component {
-  render() {
-    return (
-      <div className="page">
-        <Sidebar />
-        <Content />
-      </div>
-    );
-  }
-}
-
-export default Dashboard;
+// import React, { Component } from "react";
+//
+// class Dashboard extends Component {
+//   render() {
+//     return (
+//       <div className="page">
+//         <Sidebar />
+//         <Content />
+//       </div>
+//     );
+//   }
+// }
+//
+// export default Dashboard;

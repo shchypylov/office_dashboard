@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Pie, Cell, PieChart, Legend } from "recharts";
-import "../styles/bills.css";
+import "../css/bills.css";
 
 class DashFirstRow extends Component {
   render() {

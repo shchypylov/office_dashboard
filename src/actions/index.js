@@ -8,6 +8,14 @@ export const RENDER_SIDEBAR = "RENDER_SIDEBAR";
 export const CHANGE_SIDEBAR = "CHANGE_SIDEBAR";
 
 
+function writeUserData(userId, name, email, imageUrl) {
+  fire.database().ref('users/' + userId).set({
+    username: name,
+    email: email,
+    profile_picture : imageUrl
+  });
+}
+
 export const fetchUsers = () => async dispatch => {
   let messagesRef = await fire.database().ref('users').on('value', function (snapshot) {
     dispatch({
@@ -16,6 +24,19 @@ export const fetchUsers = () => async dispatch => {
     })
   });
 };
+
+export const editUser = (key, login, password, props) => async dispatch => {
+  
+  fire.database().ref('users/' + key).set({
+    login: login,
+    password : password,
+    name : props.name,
+    surname : props.surname
+  });
+  
+  console.log('---', key);
+  console.log('---', props);
+}
 
 export const submitUser = (user) => {
   fire.database().ref('users').push(user);

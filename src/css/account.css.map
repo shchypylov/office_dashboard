@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACE,mBAAG;EACD,SAAS,EAAE,IAAI",
+"sources": ["../scss/account.scss"],
+"names": [],
+"file": "account.css"
+}

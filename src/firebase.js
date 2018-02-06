@@ -1,4 +1,4 @@
-import firebse from "firebase"
+import firebse from "firebase";
 
 // Initialize Firebase
 const config = {
@@ -11,4 +11,4 @@ const config = {
 };
 
 const fire = firebse.initializeApp(config);
-export default fire
+export default fire;
