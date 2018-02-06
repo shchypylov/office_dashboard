@@ -106,7 +106,7 @@ class Account extends Component {
   
   submit = (props) => {
     let {users} = this.props;
-    let login = this.state.user
+    let login = this.state.user;
     Object.keys(users).map(element => {
       if (login === users[element].login) {
         this.props.editUser(element, login, users[element].password, props);
@@ -120,7 +120,6 @@ class Account extends Component {
         <div className="account-editing">
           <h1>Here you may change your account settings</h1>
           <AccountForm onSubmit={this.submit}/>
-          {/*<TextFieldExampleSimple/>*/}
         </div>
     );
   }

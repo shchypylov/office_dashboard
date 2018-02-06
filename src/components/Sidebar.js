@@ -18,7 +18,7 @@ class Sidebar extends Component {
         const url = sidebar[element].url;
         return (
           <li key={element}>
-            <NavLink to={url} activeClassName="active">
+            <NavLink to={url} exact activeClassName="active">
               <i className={className} />
               <span className="text">{sidebar[element].text}</span>
             </NavLink>
