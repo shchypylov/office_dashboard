@@ -1,17 +1,4 @@
-# See https://help.github.com/ignore-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-
-# testing
-/coverage
-
-# production
-/build
-
-/psd
 import firebse from "firebase"
-
 
 // Initialize Firebase
 const config = {
@@ -21,22 +8,7 @@ const config = {
   projectId: "office-dashboard-dfdd3",
   storageBucket: "",
   messagingSenderId: "985294119216"
-};
+}; 
 
 const fire = firebse.initializeApp(config);
 export default fire
-# firebase
-# firebase.js
-
-
-# misc
-.DS_Store
-.idea
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
