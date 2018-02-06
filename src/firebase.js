@@ -8,7 +8,7 @@ const config = {
   projectId: "office-dashboard-dfdd3",
   storageBucket: "",
   messagingSenderId: "985294119216"
-}; 
+};
 
 const fire = firebse.initializeApp(config);
 export default fire

@@ -45,7 +45,7 @@
           transition: .3s all; }
         .sidebar .sidebar-menu li a .text {
           display: block; }
-        .sidebar .sidebar-menu li a:hover {
+        .sidebar .sidebar-menu li a:hover, .sidebar .sidebar-menu li a.active {
           background: #2e272f; }
   .sidebar .buttons {
     margin-bottom: 30px; }

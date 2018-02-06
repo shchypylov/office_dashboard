@@ -16,9 +16,10 @@ class Sidebar extends Component {
     const content = sidebar ? (
         Object.keys(sidebar).map(element => {
           const className = `icon ${sidebar[element].icon}`;
-          return (
+          const active = sidebar[element].active;
+            return (
               <li key={element}>
-                <a href="#">
+                <a href="#" className={active}>
                   <i className={className} />
                   <span className="text">
                     {sidebar[element].text}

@@ -61,7 +61,7 @@
         .text {
           display: block;
         }
-        &:hover {
+        &:hover, &.active {
           background: $dark_grape_hover;
         }
       }

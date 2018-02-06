@@ -39,9 +39,7 @@ class Login extends Component {
   
   submit = values => {
     if (cookie.load('userID') === undefined) {
-      const expires = new Date();
       const now = new Date();
-      expires.setDate(now.getDate() + 14);
       cookie.save(
           "userID",
           values.login

@@ -9,7 +9,7 @@ class Content extends Component {
     return (
         <div className="page-content">
           <Menu />
-          <DashFirstRow />
+          {/*<DashFirstRow />*/}
         </div>
     );
   }

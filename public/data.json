@@ -2,7 +2,8 @@
   "sidebar": {
     "1": {
       "icon": "icon-meter",
-      "text": "Dashboard"
+      "text": "Dashboard",
+      "active" : "active"
     },
     "2": {
       "text": "Account Info",
