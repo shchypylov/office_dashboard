@@ -9,7 +9,11 @@
   align-items: center; }
   .top-menu .top-menu__info {
     margin-left: auto;
-    display: flex; }
+    display: flex;
+    align-items: center; }
+  .top-menu .balance {
+    margin-right: 20px;
+    align-items: center; }
   .top-menu .top-menu__notifications {
     display: flex;
     align-items: center;

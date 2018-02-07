@@ -5,6 +5,7 @@ import Menu from "./Menu.js";
 import Sidebar from "./Sidebar.js";
 import "../css/page-content.css";
 import Account from "./Account";
+import Cash from "./Cash";
 
 class Application extends Component {
   render() {
@@ -21,6 +22,7 @@ class Application extends Component {
                 component={DashboardComponent}
               />
               <Route exact path="/dashboard/account_info" component={Account} />
+              <Route exact path="/dashboard/cash" component={Cash} />
             </Switch>
           </div>
         </div>

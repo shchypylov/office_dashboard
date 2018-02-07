@@ -1,29 +1,29 @@
-import React, { Component } from "react";
-import { Field, reduxForm } from "redux-form";
-import { connect } from "react-redux";
+import React, {Component} from "react";
+import {Field, reduxForm} from "redux-form";
+import {connect} from "react-redux";
 import cookie from "react-cookies";
 import history from "../history";
-import { submitUser, fetchUsers } from "../actions";
+import {submitUser, fetchUsers} from "../actions";
 import "../css/login.css";
 
 let LoginForm = props => {
-  const { handleSubmit } = props;
+  const {handleSubmit} = props;
   return (
-    <form onSubmit={handleSubmit} className="login-form">
-      <div className="input-wrap">
-        <label htmlFor="login">Login</label>
-        <Field name="login" component="input" type="text" />
-      </div>
-      <div className="input-wrap">
-        <label htmlFor="password">Password</label>
-        <Field name="password" component="input" type="password" />
-      </div>
-      <div className="input-wrap">
-        <button className="btn" type="submit">
-          Submit
-        </button>
-      </div>
-    </form>
+      <form onSubmit={handleSubmit} className="login-form">
+        <div className="input-wrap">
+          <label htmlFor="login">Login</label>
+          <Field name="login" component="input" type="text"/>
+        </div>
+        <div className="input-wrap">
+          <label htmlFor="password">Password</label>
+          <Field name="password" component="input" type="password"/>
+        </div>
+        <div className="input-wrap">
+          <button className="btn" type="submit">
+            Submit
+          </button>
+        </div>
+      </form>
   );
 };
 
@@ -32,14 +32,13 @@ class Login extends Component {
     error: false,
     user: cookie.load("userID") || "guest"
   };
-
+  
   componentWillMount() {
     this.props.fetchUsers();
   }
-
+  
   submit = values => {
     if (cookie.load("userID") === undefined) {
-      const now = new Date();
       cookie.save("userID", values.login);
       this.props.submitUser(values);
     } else {
@@ -61,26 +60,26 @@ class Login extends Component {
       }
     }
   };
-
+  
   render() {
     return (
-      <div className="login-page">
-        <img src="/img/bg.jpg" alt="" />
-        <div className="content">
-          <div className="welcome">
-            <h1>Hello,</h1>
-            <h3>please, log-in</h3>
-          </div>
-          <LoginForm onSubmit={this.submit} />
-          {this.state.error && (
-            <div className="error">
-              Sorry, something gone wrong. Double-check your login/password. By
-              the way, your login is:
-              <b> {this.state.user}</b>
+        <div className="login-page">
+          <img src="/img/bg.jpg" alt=""/>
+          <div className="content">
+            <div className="welcome">
+              <h1>Hello,</h1>
+              <h3>please, log-in</h3>
             </div>
-          )}
+            <LoginForm onSubmit={this.submit}/>
+            {this.state.error && (
+                <div className="error">
+                  Sorry, something gone wrong. Double-check your login/password. By
+                  the way, your login is:
+                  <b> {this.state.user}</b>
+                </div>
+            )}
+          </div>
         </div>
-      </div>
     );
   }
 }
@@ -95,9 +94,9 @@ const mapDispatchToProps = {
 };
 
 export default connect(
-  state => ({
-    user: state.user,
-    users: state.users
-  }),
-  mapDispatchToProps
+    state => ({
+      user: state.user,
+      users: state.users
+    }),
+    mapDispatchToProps
 )(Login);

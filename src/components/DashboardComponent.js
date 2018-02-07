@@ -17,7 +17,6 @@ class CardExampleWithAvatar extends Component {
   };
   
   render() {
-    console.log('---', "go");
     return (
       <Card>
         <CardHeader

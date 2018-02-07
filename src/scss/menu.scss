@@ -14,6 +14,11 @@
   .top-menu__info {
     margin-left: auto;
     display: flex;
+    align-items: center;
+  }
+  .balance {
+    margin-right: 20px;
+    align-items: center;
   }
   .top-menu__notifications {
     display: flex;
