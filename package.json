@@ -6,7 +6,6 @@
     "/**": "index.html"
   },
   "private": true,
-//  "homepage": "http://nikulio.github.io/office_dashboard",
   "dependencies": {
     "axios": "^0.17.1",
     "firebase": "^4.9.1",
