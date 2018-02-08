@@ -6,6 +6,7 @@ import {changeSidebarReducer} from "./changeSidebarReducer";
 import {fetchNotificationsReducer} from "./fetchNotificationsReducer";
 import {fetchUsersReducer} from "./fetchUsersReducer";
 import {balanceReducer} from "./balanceReducer"
+import {renderNotesReducer} from "./renderNotesReducer"
 
 export default combineReducers({
   form: formReducer,
@@ -15,4 +16,5 @@ export default combineReducers({
   menu: changeSidebarReducer,
   notifications: fetchNotificationsReducer,
   balance: balanceReducer,
+  notes : renderNotesReducer,
 });

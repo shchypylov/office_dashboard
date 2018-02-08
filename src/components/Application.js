@@ -6,6 +6,9 @@ import Sidebar from "./Sidebar.js";
 import "../css/page-content.css";
 import Account from "./Account";
 import Cash from "./Cash";
+import Settings from "./Settings";
+import Notes from "./Notes";
+
 
 class Application extends Component {
   render() {
@@ -22,7 +25,9 @@ class Application extends Component {
                 component={DashboardComponent}
               />
               <Route exact path="/dashboard/account_info" component={Account} />
-              <Route exact path="/dashboard/cash" component={Cash} />
+              <Route exact path="/dashboard/balance" component={Cash} />
+              <Route exact path="/dashboard/settings" component={Settings} />
+              <Route exact path="/dashboard/notes" component={Notes} />
             </Switch>
           </div>
         </div>

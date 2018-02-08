@@ -11,9 +11,9 @@
       "url": "/dashboard/account_info"
     },
     "3": {
-      "text": "Cash",
+      "text": "Balance",
       "icon": "icon-coin-dollar",
-      "url": "/dashboard/cash"
+      "url": "/dashboard/balance"
     },
     "4": {
       "text": "Settings",
