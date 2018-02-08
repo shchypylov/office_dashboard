@@ -1,6 +1,5 @@
 import axios from "axios";
 import fire from "../firebase";
-import cookie from "react-cookies";
 
 export const SUBMIT_USER = "SUBMIT_USER";
 export const FETCH_USERS = "FETCH_USERS";
