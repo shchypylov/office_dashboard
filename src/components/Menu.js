@@ -15,9 +15,8 @@ import "../css/menu.css";
 class Menu extends Component {
   state = {
     user: cookie.load("userID") || "Guest",
-    // balance: this.props.balance || 0
+    balance: this.props.balance || 0
   };
-  
 
   componentDidMount() {
     this.props.fetchNotifications();
@@ -61,8 +60,6 @@ class Menu extends Component {
   }
 
   render() {
-    // this.fetchBalanceUser(); //вызываю
-
     const content = this.renderNotifications() ? (
       this.renderNotifications()
     ) : (
