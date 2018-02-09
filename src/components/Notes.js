@@ -53,6 +53,9 @@ class Notes extends Component {
   submit = props => {
     let users = this.props.users;
     let login = this.state.user;
+    this.setState({
+      text: ""
+    });
     Object.keys(users).map(element => {
       if (login === users[element].login) {
         this.props.addNote(element, {text: props.note});
@@ -63,17 +66,19 @@ class Notes extends Component {
   edit = (key) => {
     this.setState({
       edition: !this.state.edition,
-      changedKey : key
+      changedKey: key
     });
-
+    
   };
   submitSaveNote = () => {
-    let {changedText, changedKey}= this.state;
+    let {changedText, changedKey} = this.state;
     let users = this.props.users;
     let user = this.state.user;
-    console.log('---', changedText, changedKey);
+    this.setState({
+      changedText: "",
+      edition: !this.state.edition
+    })
     
- 
     Object.keys(users).map(element => {
       if (user === users[element].login) {
         this.props.editNote(changedText, changedKey, element)

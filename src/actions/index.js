@@ -44,8 +44,6 @@ export const fetchBalance = user => async dispatch => {
         let users = snapshot.val();
         Object.keys(users).map(element => {
           if (user === users[element].login) {
-            console.log(user);
-            console.log(users[element].cash);
             return dispatch({
               type: FETCH_BALANCE,
               payload: users[element].cash
