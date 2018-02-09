@@ -30,6 +30,8 @@ let LoginForm = props => {
 class Login extends Component {
   state = {
     error: false,
+    current_user: "",
+    user_exists_error: false,
     user: cookie.load("userID") || "You don't have account yet, so just create it"
   };
   
@@ -38,35 +40,47 @@ class Login extends Component {
   }
   
   submit = values => {
-    if (values.login && values.password) {
-      if (cookie.load("userID") === undefined) {
-        cookie.save("userID", values.login);
-        this.props.submitUser(values);
-      } else {
-        const users = this.props.users;
-        const userID = cookie.load("userID");
-        const user = {};
-        Object.keys(users).map(elem => {
-          if (users[elem].login === userID) {
-            user.login = users[elem].login;
-            user.password = users[elem].password;
+    
+    let {users} = this.props;
+    
+    Object.keys(users).map(element => {
+      if (values.login !== users[element].login) {
+        if (values.login && values.password) {
+          if (cookie.load("userID") === undefined) {
+            cookie.save("userID", values.login);
+            this.props.submitUser(values);
+          } else {
+            const users = this.props.users;
+            const userID = cookie.load("userID");
+            const user = {};
+            Object.keys(users).map(elem => {
+              if (users[elem].login === userID) {
+                user.login = users[elem].login;
+                user.password = users[elem].password;
+              }
+            });
+            if (values.login === user.login && values.password === user.password) {
+              history.push("/dashboard/dash");
+            } else {
+              this.setState({
+                error: true
+              });
+            }
           }
-        });
-        if (values.login === user.login && values.password === user.password) {
-          history.push("/dashboard/dash");
-        } else {
+        }
+        else {
           this.setState({
             error: true
           });
         }
       }
-    }
-    else {
-      this.setState({
-        error: true
-      });
-    }
-    
+      else {
+        this.setState({
+          current_user: users[element].login,
+          user_exists_error: !this.state.user_exists_error
+        });
+      }
+    })
   };
   
   render() {
@@ -84,7 +98,14 @@ class Login extends Component {
                   Sorry, something gone wrong. Double-check your login/password. By
                   the way, your login is:
                   <br/>
-                  <b style={{marginTop: "20px", display:"block"}}> {this.state.user}</b>
+                  <b style={{marginTop: "20px", display: "block"}}> {this.state.user}</b>
+                </div>
+            )}
+            {this.state.user_exists_error && (
+                <div className="error">
+                  C'mon, you are already have account here! Your login is :
+                  <br/>
+                  <b style={{display: "block"}}> {this.state.current_user}</b>
                 </div>
             )}
           </div>
@@ -111,4 +132,3 @@ export default connect(
 )(Login);
 
 
-//TODO: finish up with login valid

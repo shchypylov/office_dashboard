@@ -50,3 +50,6 @@ export default connect(state => ({
   users: state.users,
   balance: state.balance
 }), mapDispatchToProps)(Cash);
+
+
+//TODO: Fix for balance????
