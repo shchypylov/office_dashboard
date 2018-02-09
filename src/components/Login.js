@@ -30,7 +30,7 @@ let LoginForm = props => {
 class Login extends Component {
   state = {
     error: false,
-    user: cookie.load("userID") || "guest"
+    user: cookie.load("userID") || "You don't have account yet, so just create it"
   };
   
   componentWillMount() {
@@ -38,27 +38,35 @@ class Login extends Component {
   }
   
   submit = values => {
-    if (cookie.load("userID") === undefined) {
-      cookie.save("userID", values.login);
-      this.props.submitUser(values);
-    } else {
-      const users = this.props.users;
-      const userID = cookie.load("userID");
-      const user = {};
-      Object.keys(users).map(elem => {
-        if (users[elem].login === userID) {
-          user.login = users[elem].login;
-          user.password = users[elem].password;
-        }
-      });
-      if (values.login === user.login && values.password === user.password) {
-        history.push("/dashboard/dash");
+    if (values.login && values.password) {
+      if (cookie.load("userID") === undefined) {
+        cookie.save("userID", values.login);
+        this.props.submitUser(values);
       } else {
-        this.setState({
-          error: true
+        const users = this.props.users;
+        const userID = cookie.load("userID");
+        const user = {};
+        Object.keys(users).map(elem => {
+          if (users[elem].login === userID) {
+            user.login = users[elem].login;
+            user.password = users[elem].password;
+          }
         });
+        if (values.login === user.login && values.password === user.password) {
+          history.push("/dashboard/dash");
+        } else {
+          this.setState({
+            error: true
+          });
+        }
       }
     }
+    else {
+      this.setState({
+        error: true
+      });
+    }
+    
   };
   
   render() {
@@ -75,7 +83,8 @@ class Login extends Component {
                 <div className="error">
                   Sorry, something gone wrong. Double-check your login/password. By
                   the way, your login is:
-                  <b> {this.state.user}</b>
+                  <br/>
+                  <b style={{marginTop: "20px", display:"block"}}> {this.state.user}</b>
                 </div>
             )}
           </div>
@@ -100,3 +109,6 @@ export default connect(
     }),
     mapDispatchToProps
 )(Login);
+
+
+//TODO: finish up with login valid
