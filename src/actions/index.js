@@ -15,7 +15,7 @@ export const editNote = (text, key, element) => async dispatch => {
       .database()
       .ref("users/" + element + "/notes/" + key)
       .set({
-        text : text,
+        text: text,
       });
 };
 
@@ -99,17 +99,6 @@ export const editUser = (key, login, password, props) => async dispatch => {
 };
 
 export const submitUser = user => {
-  fire
-      .database()
-      .ref("users")
-      .push(user)
-      .set({
-        login: user.login,
-        password: user.password,
-        name: "",
-        surname: "",
-        cash: 0
-      });
   return {
     type: SUBMIT_USER,
     payload: user
