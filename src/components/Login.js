@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import cookie from "react-cookies";
 import history from "../history";
 import {submitUser, fetchUsers} from "../actions";
+import Toggle from 'material-ui/Toggle';
 import "../css/login.css";
 
 let LoginForm = props => {
@@ -27,11 +28,38 @@ let LoginForm = props => {
   );
 };
 
+
+const styles = {
+  block: {
+    maxWidth: 250,
+  },
+  toggle: {
+    marginBottom: 16,
+  },
+  thumbOff: {
+    backgroundColor: '#ffcccc',
+  },
+  trackOff: {
+    backgroundColor: '#ff9d9d',
+  },
+  thumbSwitched: {
+    backgroundColor: 'red',
+  },
+  trackSwitched: {
+    backgroundColor: '#ff9d9d',
+  },
+  labelStyle: {
+    color: 'red',
+  },
+};
+
+
 class Login extends Component {
   state = {
-    error: false,
     current_user: "",
+    login_error: false,
     user_exists_error: false,
+    empty_data_error: false,
     user: cookie.load("userID") || "You don't have account yet, so just create it"
   };
   
@@ -42,15 +70,13 @@ class Login extends Component {
   submit = values => {
     
     let {users} = this.props;
-    
-    Object.keys(users).map(element => {
-      if (values.login !== users[element].login) {
-        if (values.login && values.password) {
+    if (values.login && values.password) {
+      Object.keys(users).map(element => {
+        if (values.login === users[element].login) {
           if (cookie.load("userID") === undefined) {
             cookie.save("userID", values.login);
             this.props.submitUser(values);
           } else {
-            const users = this.props.users;
             const userID = cookie.load("userID");
             const user = {};
             Object.keys(users).map(elem => {
@@ -63,24 +89,33 @@ class Login extends Component {
               history.push("/dashboard/dash");
             } else {
               this.setState({
-                error: true
-              });
+                login_error: true
+              })
             }
           }
         }
         else {
           this.setState({
-            error: true
+            login_error: true,
+            empty_data_error: false,
+            user_exists_error: false
           });
         }
-      }
-      else {
-        this.setState({
-          current_user: users[element].login,
-          user_exists_error: !this.state.user_exists_error
-        });
-      }
-    })
+        // else {
+        //   this.setState({
+        //     current_user: users[element].login,
+        //     user_exists_error: !this.state.user_exists_error
+        //   });
+        // }
+      })
+    }
+    else {
+      this.setState({
+        empty_data_error: !this.state.empty_data_error,
+        login_error: false,
+        user_exists_error: false,
+      });
+    }
   };
   
   render() {
@@ -92,18 +127,31 @@ class Login extends Component {
               <h1>Hello,</h1>
               <h3>please, log-in</h3>
             </div>
+            
+            <div style={styles.block}>
+              <Toggle
+                  label="Register new?"
+                  style={styles.toggle}
+              />
+            </div>
+            
+            
             <LoginForm onSubmit={this.submit}/>
-            {this.state.error && (
+            {this.state.login_error && (
                 <div className="error">
-                  Sorry, something gone wrong. Double-check your login/password. By
-                  the way, your login is:
-                  <br/>
-                  <b style={{marginTop: "20px", display: "block"}}> {this.state.user}</b>
+                  Sorry, something gone wrong. Double-check your login/password or create another account
                 </div>
             )}
             {this.state.user_exists_error && (
                 <div className="error">
                   C'mon, you are already have account here! Your login is :
+                  <br/>
+                  <b style={{display: "block"}}> {this.state.current_user}</b>
+                </div>
+            )}
+            {this.state.empty_data_error && (
+                <div className="error">
+                  Considering putting some data?
                   <br/>
                   <b style={{display: "block"}}> {this.state.current_user}</b>
                 </div>
