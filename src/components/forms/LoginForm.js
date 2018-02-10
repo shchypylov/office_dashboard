@@ -27,8 +27,8 @@ let LoginComponent = props => {
         <div className="input-wrap">
           <Field name="password" floatingLabelText="Your password" component={renderField} type="password"/>
         </div>
-        <div className="input-wrap">
-          <RaisedButton label="Submit" primary={true} type="submit"/>
+        <div className="input-wrap submit-wrap">
+          <RaisedButton label="Submit" className="submit-button"l primary={true} type="submit"/>
         </div>
       </form>
   );
@@ -51,6 +51,7 @@ class LoginForm extends Component {
     if (values.login && values.password) {
       Object.keys(users).map(element => {
         if (values.login === users[element].login && values.password === users[element].password) {
+          cookie.remove("userID");
           cookie.save("userID", values.login);
           history.push("/dashboard/dash");
         }

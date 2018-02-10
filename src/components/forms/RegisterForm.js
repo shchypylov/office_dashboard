@@ -1,9 +1,11 @@
 import React, {Component} from "react"
 import {connect} from "react-redux"
 import {Field, reduxForm} from "redux-form"
-import cookies from "react-cookies"
+import cookie from "react-cookies"
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import {addNewUser} from "../../actions"
+import history from "../../history";
 
 
 const renderField = ({input, label, type, floatingLabelText}) => (
@@ -31,8 +33,8 @@ let RegisterComponent = (props) => {
         <div className="input-wrap">
           <Field name="surname" floatingLabelText="New surname" component={renderField} type="text"/>
         </div>
-        <div className="input-wrap">
-          <RaisedButton label="Submit" primary={true} type="submit"/>
+        <div className="input-wrap submit-wrap">
+          <RaisedButton className="submit-button" label="Submit" primary={true} type="submit"/>
         </div>
       </form>
   );
@@ -47,21 +49,28 @@ class RegisterForm extends Component {
   submit = val => {
     const {users} = this.props;
     Object.keys(users).map(user => {
-      if (!val.login || !val.password) {
-        this.setState({
-          missingData: true
-        })
-      }
-      else if (val.login !== users[user].login) {
-        if (val.login && val.password) {
-        
+      if (val.login && val.password) {
+        if (val.login !== users[user].login) {
+          this.props.addNewUser(val);
+          cookie.remove("userID");
+          cookie.save("userID", val.login);
+          history.push("/dashboard/dash");
         }
+        else {
+          this.setState({
+            userExists: true,
+            missingData: false
+          })
+        }
+        
       }
       else {
         this.setState({
-          userExists: true
+          missingData: true,
+          userExists: false
         })
       }
+      
       
     })
   };
@@ -92,5 +101,8 @@ RegisterComponent = reduxForm({
   form: "registerForm"
 })(RegisterComponent);
 
+const mapDispatchToProps = {
+  addNewUser,
+}
 
-export default RegisterForm
+export default connect(null, mapDispatchToProps)(RegisterForm)

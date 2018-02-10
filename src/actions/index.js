@@ -2,6 +2,7 @@ import axios from "axios";
 import fire from "../firebase";
 
 export const SUBMIT_USER = "SUBMIT_USER";
+export const ADD_NEW_USER = "ADD_NEW_USER";
 export const FETCH_USERS = "FETCH_USERS";
 export const FETCH_NOTIFICATIONS = "FETCH_NOTIFICATIONS";
 export const RENDER_SIDEBAR = "RENDER_SIDEBAR";
@@ -9,6 +10,19 @@ export const CHANGE_SIDEBAR = "CHANGE_SIDEBAR";
 export const ADD_BALANCE = "ADD_BALANCE";
 export const FETCH_BALANCE = "FETCH_BALANCE";
 export const RENDER_NOTES = "RENDER_NOTES";
+
+export const addNewUser = (data) => async dispatch => {
+  fire.database().ref("users").push(data).set({
+    login: data.login,
+    password: data.password,
+    name: data.name,
+    surname: data.surname,
+    cash: 0
+  });
+  return dispatch({
+    type: ADD_NEW_USER
+  })
+};
 
 export const editNote = (text, key, element) => async dispatch => {
   let users = await fire
