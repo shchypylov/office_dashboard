@@ -1,8 +1,11 @@
-.page-content {
-  padding: 0 53px 37px;
-  flex: 1;
-  background: url("/img/bg.jpg") no-repeat scroll;
-  background-size: cover;
-  min-height: 100vh; }
+.top-menu {
+  width: 100%;
+  flex: 1; }
+
+.page {
+  min-height: 100vh;
+  min-width: 100vw; }
+  .page-content {
+    padding: 20px; }
 
 /*# sourceMappingURL=page-content.css.map */

@@ -28,7 +28,7 @@ let LoginComponent = props => {
           <Field name="password" floatingLabelText="Your password" component={renderField} type="password"/>
         </div>
         <div className="input-wrap submit-wrap">
-          <RaisedButton label="Submit" className="submit-button"l primary={true} type="submit"/>
+          <RaisedButton label="Submit" className="submit-button" primary={true} type="submit"/>
         </div>
       </form>
   );
