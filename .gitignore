@@ -12,7 +12,7 @@ build
 /psd
 
 # firebase
-# firebase.js
+firebase.js
 .sass-caches
 
 # misc
