@@ -45,10 +45,12 @@ export const renderNotes = user => async dispatch => {
       let users = snapshot.val();
       Object.keys(users).map(element => {
         if (user === users[element].login) {
-          return dispatch({
-            type: RENDER_NOTES,
-            payload: users[element].notes
-          });
+          if (users[element].notes) {
+            return dispatch({
+              type: RENDER_NOTES,
+              payload: users[element].notes
+            });
+          }
         }
       });
     });
@@ -84,6 +86,7 @@ export const fetchUsers = () => async dispatch => {
 };
 
 export const addNote = (element, val) => async dispatch => {
+  console.log(element);
   let cash = await fire
     .database()
     .ref("users/" + element + "/notes/")

@@ -85,6 +85,7 @@ class Notes extends Component {
   };
 
   componentDidMount() {
+    console.log(this.state.user);
     this.props.renderNotes(this.state.user);
   }
 
