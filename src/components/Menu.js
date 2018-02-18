@@ -8,10 +8,12 @@ import {
 } from "../actions";
 import cookie from "react-cookies";
 import { NavLink, Link } from "react-router-dom";
+
 //material ui
 import AppBar from "material-ui/AppBar";
 import IconButton from "material-ui/IconButton";
 import IconMenu from "material-ui/IconMenu";
+import Paper from "material-ui/Paper";
 import Menu from "material-ui/Menu";
 import MenuItem from "material-ui/MenuItem";
 import MoreVertIcon from "material-ui/svg-icons/navigation/more-vert";
@@ -23,6 +25,9 @@ import { grey900, white, greenA400 } from "material-ui/styles/colors";
 import "../css/menu.css";
 
 class MenuItems extends Component {
+  state = {
+    menuOpen: false
+  };
   render() {
     const { args } = this.props;
     const items = this.props.menu;
@@ -41,25 +46,25 @@ class MenuItems extends Component {
     );
     return (
       <div>
-        <IconMenu
-          {...args}
-          iconButtonElement={
-            <IconButton>
-              <MoreVertIcon color={white} />
-            </IconButton>
-          }
-          targetOrigin={{ horizontal: "right", vertical: "top" }}
-          anchorOrigin={{ horizontal: "right", vertical: "top" }}
+        <IconButton
+          onClick={() => this.setState({ menuOpen: !this.state.menuOpen })}
         >
-          <Menu desktop={true} width={320}>
-            <MenuItem
-              disabled={true}
-              leftIcon={<AttachMoney color={grey900} />}
-              primaryText={balance}
-            />
-            {content}
-          </Menu>
-        </IconMenu>
+          <MoreVertIcon color={white} />
+        </IconButton>
+        {this.state.menuOpen && (
+          <div className="top-navigation">
+            <Paper>
+              <Menu desktop={true} width={320}>
+                <MenuItem
+                  disabled={true}
+                  leftIcon={<AttachMoney color={grey900} />}
+                  primaryText={balance}
+                />
+                {content}
+              </Menu>
+            </Paper>
+          </div>
+        )}
       </div>
     );
   }
