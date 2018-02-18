@@ -4,7 +4,7 @@ Test project. Dashboard made by React/Redux and Material UI
 
 ## Demo
 
-![demo](https://imgur.com/UUUQ9ro.gif)
+![demo](https://imgur.com/afkQfNt.gif)
 
 ### What to try it by yourself?
 
