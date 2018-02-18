@@ -11,105 +11,108 @@ export const ADD_BALANCE = "ADD_BALANCE";
 export const FETCH_BALANCE = "FETCH_BALANCE";
 export const RENDER_NOTES = "RENDER_NOTES";
 
-export const addNewUser = (data) => async dispatch => {
-  fire.database().ref("users").push(data).set({
-    login: data.login,
-    password: data.password,
-    name: data.name,
-    surname: data.surname,
-    cash: 0
-  });
+export const addNewUser = data => async dispatch => {
+  fire
+    .database()
+    .ref("users")
+    .push(data)
+    .set({
+      login: data.login,
+      password: data.password,
+      name: data.name,
+      surname: data.surname,
+      cash: 0
+    });
   return dispatch({
     type: ADD_NEW_USER
-  })
+  });
 };
 
 export const editNote = (text, key, element) => async dispatch => {
   let users = await fire
-      .database()
-      .ref("users/" + element + "/notes/" + key)
-      .set({
-        text: text,
-      });
+    .database()
+    .ref("users/" + element + "/notes/" + key)
+    .set({
+      text: text
+    });
 };
 
 export const renderNotes = user => async dispatch => {
   let users = await fire
-      .database()
-      .ref("users")
-      .on("value", function (snapshot) {
-        let users = snapshot.val();
-        Object.keys(users).map(element => {
-          if (user === users[element].login) {
-            return dispatch({
-              type: RENDER_NOTES,
-              payload: users[element].notes
-            });
-          }
-        });
+    .database()
+    .ref("users")
+    .on("value", function(snapshot) {
+      let users = snapshot.val();
+      Object.keys(users).map(element => {
+        if (user === users[element].login) {
+          return dispatch({
+            type: RENDER_NOTES,
+            payload: users[element].notes
+          });
+        }
       });
+    });
 };
 
 export const fetchBalance = user => async dispatch => {
   let messagesRef = await fire
-      .database()
-      .ref("users")
-      .on("value", function (snapshot) {
-        let users = snapshot.val();
-        Object.keys(users).map(element => {
-          if (user === users[element].login) {
-            return dispatch({
-              type: FETCH_BALANCE,
-              payload: users[element].cash
-            });
-          }
-        });
+    .database()
+    .ref("users")
+    .on("value", function(snapshot) {
+      let users = snapshot.val();
+      Object.keys(users).map(element => {
+        if (user === users[element].login) {
+          return dispatch({
+            type: FETCH_BALANCE,
+            payload: users[element].cash
+          });
+        }
       });
+    });
 };
 
 export const fetchUsers = () => async dispatch => {
   let messagesRef = await fire
-      .database()
-      .ref("users")
-      .on("value", function (snapshot) {
-        dispatch({
-          type: FETCH_USERS,
-          payload: snapshot.val()
-        });
+    .database()
+    .ref("users")
+    .on("value", function(snapshot) {
+      dispatch({
+        type: FETCH_USERS,
+        payload: snapshot.val()
       });
+    });
 };
-
 
 export const addNote = (element, val) => async dispatch => {
   let cash = await fire
-      .database()
-      .ref("users/" + element + "/notes/")
-      .push(val);
+    .database()
+    .ref("users/" + element + "/notes/")
+    .push(val);
 };
 
 export const addBalance = (element, val, prevBalance) => async dispatch => {
   let cash = await fire
-      .database()
-      .ref("users/" + element)
-      .update({
-        cash: prevBalance + val
-      });
+    .database()
+    .ref("users/" + element)
+    .update({
+      cash: prevBalance + val
+    });
   return dispatch({
     type: ADD_BALANCE,
-    payload: val
+    payload: prevBalance + val
   });
 };
 
 export const editUser = (key, login, password, props) => async dispatch => {
   fire
-      .database()
-      .ref("users/" + key)
-      .update({
-        login: login,
-        password: password,
-        name: props.name,
-        surname: props.surname
-      });
+    .database()
+    .ref("users/" + key)
+    .update({
+      login: login,
+      password: password,
+      name: props.name,
+      surname: props.surname
+    });
 };
 
 export const submitUser = user => {

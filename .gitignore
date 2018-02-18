@@ -13,7 +13,7 @@ build
 
 # firebase
 # firebase.js
-
+.sass-caches
 
 # misc
 .DS_Store

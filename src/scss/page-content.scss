@@ -2,10 +2,21 @@
   width: 100%;
   flex: 1;
 }
+html,
+body {
+  overflow-x: hidden;
+}
 .page {
   min-height: 100vh;
   min-width: 100vw;
   &-content {
     padding: 20px;
+    max-width: 768px;
+    width: 100%;
+    margin: 0 auto;
+    h1 {
+      font-size: 36px;
+      margin: 20px 0;
+    }
   }
 }

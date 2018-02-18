@@ -1,55 +1,10 @@
 @import "variables";
 
-//.input-wrap {
-//  display: block;
-//  margin-bottom: 20px;
-//  &:last-of-type {
-//    margin-bottom: 0;
-//  }
-//  label {
-//    display: block;
-//    margin-bottom: 5px;
-//  }
-//  input {
-//    display: block;
-//    width: 100%;
-//    border: 1px solid $grey;
-//    outline: none;
-//    height: 35px;
-//    padding: 5px 15px;
-//    font-size: 14px;
-//    border-radius: 10px;
-//  }
-//}
-
-.btn {
-  padding: 11px 18px;
-  display: block;
-  text-align: center;
-  border: 1px solid $white;
-  border-radius: 10px;
-  background: transparent;
-  outline: none;
-  transition: 0.3s all;
-  max-width: 190px;
-  margin: 0 auto;
-  &:hover {
-    cursor: pointer;
-    background: $white;
-    color: $grey;
-  }
-}
-
-* {
-  font-size: 14px;
-}
-
 p,
 span,
 div,
 label,
 .btn,
 a {
-  //color: #fff;
   text-decoration: none;
 }

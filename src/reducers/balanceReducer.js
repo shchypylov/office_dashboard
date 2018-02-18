@@ -5,7 +5,7 @@ export function balanceReducer(state = 0, action) {
     case actions.FETCH_BALANCE:
       return action.payload;
     case actions.ADD_BALANCE:
-      return state = state + action.payload;
+      return action.payload;
     default:
       return state;
   }

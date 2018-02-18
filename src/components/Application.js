@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import {Switch, Route} from "react-router-dom";
 import DashboardComponent from "./DashboardComponent";
-import Menu from "./Menu.js";
-import Sidebar from "./Sidebar.js";
+import MenuComponent from "./Menu.js";
 import "../css/page-content.css";
 import Account from "./Account";
 import Cash from "./Cash";
@@ -14,7 +13,7 @@ class Application extends Component {
   render() {
     return (
         <div className="page">
-          <Menu className="top-men"/>
+          <MenuComponent className="top-men"/>
           <div className="page-content">
             <Switch>
               <Route

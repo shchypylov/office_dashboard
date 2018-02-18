@@ -42,8 +42,8 @@ class LoginForm extends Component {
     login_error: false,
     user_exists_error: false,
     empty_data_error: false,
-    user: cookie.load("userID") || "Guest"
-  }
+    user: cookie.load("userID") || "guest"
+  };
   
   submit = values => {
     
@@ -52,7 +52,7 @@ class LoginForm extends Component {
       Object.keys(users).map(element => {
         if (values.login === users[element].login && values.password === users[element].password) {
           cookie.remove("userID");
-          cookie.save("userID", values.login);
+          cookie.save("userID", values.login, {path: "/"});
           history.push("/dashboard/dash");
         }
         else {
